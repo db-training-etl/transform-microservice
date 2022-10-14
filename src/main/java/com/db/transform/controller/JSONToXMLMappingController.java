@@ -1,8 +1,7 @@
-package com.db.transform.Controller;
+package com.db.transform.controller;
 
-import com.db.transform.Entity.RequestModel;
+import com.db.transform.entity.RequestModel;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

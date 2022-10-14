@@ -1,4 +1,4 @@
-package com.db.transform.Entity;
+package com.db.transform.entity;
 
 import lombok.Getter;
 import lombok.Setter;

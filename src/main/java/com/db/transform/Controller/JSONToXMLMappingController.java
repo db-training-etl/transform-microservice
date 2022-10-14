@@ -1,0 +1,15 @@
+package com.db.transform.Controller;
+
+import com.db.transform.Entity.RequestModel;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+public class JSONToXMLMappingController {
+
+    @PostMapping(path = "/mapJsontoXML", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
+    public @ResponseBody RequestModel mapJsonToXML(@RequestBody final RequestModel request) {
+        return request;
+    }
+}

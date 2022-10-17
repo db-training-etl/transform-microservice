@@ -18,7 +18,7 @@ public class TransformControllerIT {
     @Autowired
     MockMvc mockMvc;
 
-   /*
+    @Disabled
     @Test
     public void whenJsonConverterIsFoundThenReturnResponse() throws Exception {
 
@@ -37,6 +37,6 @@ public class TransformControllerIT {
                 .andExpect(status().isOk())
                 .andExpect(content().xml(xml));
     }
-    */
-    
+
+
 }

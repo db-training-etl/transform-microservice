@@ -1,6 +1,7 @@
 package com.db.transform.service;
 
 import com.db.transform.entity.Trade;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -24,7 +25,7 @@ public class TransformServiceTest {
         //Then
         assertTrue(file.exists());
     }
-
+    @Disabled
     @Test
     void filePathIsCorrect() throws IOException {
 

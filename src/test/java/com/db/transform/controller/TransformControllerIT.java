@@ -1,17 +1,28 @@
 package com.db.transform.controller;
 
+import com.db.transform.entity.Trade;
+import com.db.transform.service.TransformService;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.HttpHandler;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.ResultMatcher;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.hamcrest.Matchers.is;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -19,37 +30,35 @@ public class TransformControllerIT {
     @Autowired
     MockMvc mockMvc;
 
+    @MockBean
+    TransformService service;
+
     @Test
     public void whenJsonConverterIsFoundThenReturnResponse() throws Exception {
 
         //Given
-        String url = "/urlThatHasJson";
 
-        String xml = "<Trade>\n" +
-                "    <id>1</id>\n" +
-                "    <tradeName/>\n" +
-                "    <bookId/>\n" +
-                "    <country/>\n" +
-                "    <counterpartyId/>\n" +
-                "    <currency/>\n" +
-                "    <cobDate/>\n" +
-                "    <amount/>\n" +
-                "    <tradeTax/>\n" +
-                "    <book/>\n" +
-                "    <counterparty/>\n" +
-                "</Trade>";
+        String url = "/trades";
 
-        String json = "{\n" +
-                "  \"id\": 1\n" +
-                "}";
-        // When
-        this.mockMvc.perform(post(url)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
+        List<Trade> trades = new ArrayList<>();
 
-                //Then
+        Trade trade = new Trade();
+
+        trade.setId(1);
+
+        trades.add(trade);
+
+        //When
+
+        given(service.receiveJsonAndParseToXML()).willReturn(trades);
+        ResultActions response = mockMvc.perform(get(url));
+
+        //Then
+
+        response
                 .andExpect(status().isOk())
-                .andExpect(content().xml(xml));
+                .andDo(print())
+                .andExpect(jsonPath("$[0].id", is(1)));
     }
 
 

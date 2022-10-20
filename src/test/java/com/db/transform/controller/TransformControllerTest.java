@@ -5,10 +5,9 @@ import com.db.transform.entity.Counterparty;
 import com.db.transform.entity.Trade;
 import com.db.transform.service.TransformService;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import org.junit.jupiter.api.*;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
 import java.util.ArrayList;

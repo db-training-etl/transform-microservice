@@ -21,7 +21,7 @@ public class TransformService {
     String baseUrl;
 
     public TransformService(){
-        this.baseUrl = "uri/";
+        this.baseUrl = "jsonplaceholder.typicode.com/"; //Cambiarlo cuando esté montado
         webClient = WebClient
                 .builder()
                         .baseUrl(baseUrl)
@@ -39,7 +39,7 @@ public class TransformService {
     public List<Trade> receiveJsonAndParseToXML() throws IOException {
 
         List<Trade> trades = webClient.get()
-               .uri("trades")
+               .uri("users")//Hay que cambiarlo cuando esté montado
                .accept(MediaType.APPLICATION_XML)
                .retrieve()
                .bodyToMono(new ParameterizedTypeReference<List<Trade>>() {})

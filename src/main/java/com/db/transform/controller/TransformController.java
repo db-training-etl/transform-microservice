@@ -3,7 +3,6 @@ package com.db.transform.controller;
 import com.db.transform.entity.Trade;
 import com.db.transform.service.TransformService;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

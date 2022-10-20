@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class TransformService {
 
-    WebClient webClient;
+    WebClient webClient; //Refractorizar en una interficie más adelante
     ObjectMapper objectMapper;
     String baseUrl;
 
@@ -38,6 +38,8 @@ public class TransformService {
 
     public List<Trade> receiveJsonAndParseToXML() throws IOException {
 
+        String path = "src/main/resources/tradeName-cobdate.xml";
+
         List<Trade> trades = webClient.get()
                .uri("users")//Hay que cambiarlo cuando esté montado
                .accept(MediaType.APPLICATION_XML)
@@ -45,18 +47,19 @@ public class TransformService {
                .bodyToMono(new ParameterizedTypeReference<List<Trade>>() {})
                .block();
 
-        createXMLFile(trades);
+        createXMLFile(trades, path);
 
         return trades;
     }
 
-    public File createXMLFile(List<Trade> requests) throws IOException {
+    public File createXMLFile(List<Trade> requests, String path) throws IOException {
+
 
         XmlMapper xmlMapper = new XmlMapper();
         xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        xmlMapper.writeValue(new File("src/main/resources/tradeName-cobdate.xml"), requests);
+        xmlMapper.writeValue(new File(path), requests);
 
-        return new File("src/main/resources/tradeName-cobdate.xml");
+        return new File(path);
     }
 
 

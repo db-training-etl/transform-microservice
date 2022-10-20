@@ -38,7 +38,7 @@ public class TransformControllerIT {
 
         //Given
 
-        String url = "/trades";
+        String url = "/trades/saveXML";
 
         List<Trade> trades = new ArrayList<>();
 

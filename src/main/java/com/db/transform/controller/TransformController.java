@@ -17,7 +17,7 @@ public class TransformController {
     @Autowired
     TransformService service;
 
-    @GetMapping(value = "/trades")
+    @GetMapping(value = "/trades/saveXML")
     public List<Trade> mapJsonToXMLAndCreateFile() throws IOException {
        return service.receiveJsonAndParseToXML();
     }

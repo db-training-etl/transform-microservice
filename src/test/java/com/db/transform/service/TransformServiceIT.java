@@ -17,11 +17,11 @@ public class TransformServiceIT {
     WebTestClient webTestClient;
 
     @Test
-    void asasa(){
+    public void ReceiveJsonWithExpectedBodyAndHeaders(){
 
         //When
         ResponseSpec response = webTestClient.get()
-                .uri("/trades")
+                .uri("/trades/saveXML")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange();
 

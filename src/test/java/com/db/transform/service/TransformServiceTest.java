@@ -30,6 +30,7 @@ public class TransformServiceTest {
     Trade trade;
     Counterparty counterparty;
     List<Trade> trades;
+    String path = "src/test/resources/tradeName-cobdate-test.xml";
 
     @AfterEach
     void tearDown() throws IOException {
@@ -96,9 +97,9 @@ public class TransformServiceTest {
 
         //Given
         List<Trade> trades = new ArrayList<>();
-        File file = new File("src/main/resources/tradeName-cobdate.xml");
+        File file = new File(path);
         //When
-        service.createXMLFile(trades);
+        service.createXMLFile(trades,path);
         //Then
         assertTrue(file.exists());
     }
@@ -109,11 +110,11 @@ public class TransformServiceTest {
 
         //Given
         List<Trade> trades = new ArrayList<>();
-        File file = new File("src/main/resources/tradeName-cobdate.xml");
+        File file = new File(path);
         //When
-        service.createXMLFile(trades);
+        service.createXMLFile(trades,path);
         //Then
-        assertEquals("src\\main\\resources\\tradeName-cobdate.xml", file.getPath());
+        assertEquals("src\\test\\resources\\tradeName-cobdate-test.xml", file.getPath());
 
     }
 

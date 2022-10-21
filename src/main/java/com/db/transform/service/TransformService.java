@@ -4,6 +4,7 @@ import com.db.transform.entity.Trade;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
+import static com.fasterxml.jackson.databind.MapperFeature.USE_WRAPPER_NAME_AS_PROPERTY_NAME;
 
 @Service
 public class TransformService {
@@ -57,6 +60,7 @@ public class TransformService {
 
         XmlMapper xmlMapper = new XmlMapper();
         xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        xmlMapper.configure( ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true );
         xmlMapper.writeValue(new File(path), requests);
 
         return new File(path);

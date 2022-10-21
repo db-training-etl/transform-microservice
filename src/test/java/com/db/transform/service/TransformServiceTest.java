@@ -105,7 +105,6 @@ public class TransformServiceTest {
     }
 
     @Test
-    @Disabled
     void filePathIsCorrect() throws IOException {
 
         //Given

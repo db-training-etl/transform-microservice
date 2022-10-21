@@ -99,22 +99,9 @@ public class TransformServiceTest {
         List<Trade> trades = new ArrayList<>();
         File file = new File(path);
         //When
-        service.createXMLFile(trades,path);
+        service.createXMLFile(trades, path);
         //Then
         assertTrue(file.exists());
-    }
-
-    @Test
-    void filePathIsCorrect() throws IOException {
-
-        //Given
-        List<Trade> trades = new ArrayList<>();
-        File file = new File(path);
-        //When
-        service.createXMLFile(trades,path);
-        //Then
-        assertEquals("src\\test\\resources\\tradeName-cobdate-test.xml", file.getPath());
-
     }
 
 }

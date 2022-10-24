@@ -18,7 +18,11 @@ paths:
         content:
           application/json:
             schema:
+<<<<<<< HEAD
               $ref: '#/components/schemas/Trade'
+=======
+                $ref: '#/components/schemas/Trade'
+>>>>>>> main
         required: true
       responses:
         '200':
@@ -75,4 +79,8 @@ components:
         bookAddress:
           type: string
         entity:
+<<<<<<< HEAD
           type: string
+=======
+          type: string
+>>>>>>> main

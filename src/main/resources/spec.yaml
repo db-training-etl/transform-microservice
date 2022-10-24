@@ -6,7 +6,7 @@ info:
 servers:
   - url: 'https'
 paths:
-  /trades/saveXML:
+  /trades/save:
     post:
       summary: Load trades
       description: Load trades
@@ -14,7 +14,7 @@ paths:
       tags:
         - trades
       requestBody:
-        description: Transform Json into a XML file
+        description: Transform Json into a file
         content:
           application/json:
             schema:

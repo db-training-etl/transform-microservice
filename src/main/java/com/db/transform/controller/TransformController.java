@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.util.List;
 
@@ -22,9 +23,9 @@ public class TransformController {
     TransformService service;
 
     @PostMapping(value = "/trades/saveXML")
-    public ResponseEntity<List<Trade>> mapJsonToXMLAndCreateFile(@RequestBody List<Trade> trades) throws IOException {
-        service.createXMLFile(trades,"src/test/resources/tradeName-cobdate-test.xml");
-       return new ResponseEntity<>(trades, HttpStatus.OK);
+    public ResponseEntity<Trade> mapJsonToXMLAndCreateFile(@RequestBody Trade trade) throws IOException, XMLStreamException {
+        service.createXMLFile(trade,"src/test/resources/tradeName-cobdate-test.xml");
+       return new ResponseEntity<>(trade, HttpStatus.OK);
                //service.receiveJsonAndParseToXML(trades);
     }
 

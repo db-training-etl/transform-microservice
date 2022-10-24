@@ -7,23 +7,30 @@ import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
+import java.io.*;
 
 @Service
 @NoArgsConstructor
 public class TransformService {
 
-    public File createXMLFile(List<Trade> requests, String path) throws IOException {
+    public void createXMLFile(Trade request, String path) throws IOException, XMLStreamException {
+
+        XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newFactory();
+        XMLStreamWriter sw = xmlOutputFactory.createXMLStreamWriter(new FileOutputStream(path,true));
+
+        XmlMapper mapper = new XmlMapper();
+        sw.writeStartDocument();
+        sw.writeStartElement("a");
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
 
-        XmlMapper xmlMapper = new XmlMapper();
-        xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        xmlMapper.configure( ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true );
-        xmlMapper.writeValue(new File(path), requests);
+        mapper.writeValue(sw,request);
 
-        return new File(path);
+
     }
 
 }

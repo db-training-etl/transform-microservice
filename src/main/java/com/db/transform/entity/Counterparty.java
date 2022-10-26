@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 @Data
-public class Counterparty implements Serializable {
+public class Counterparty{
 
     Integer counterpartyId;
     String counterpartyName;

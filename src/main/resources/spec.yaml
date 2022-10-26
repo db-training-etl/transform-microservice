@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: Transform Microservice
+  description: Transform Json into a XML file
+  version: 1.0.0
+servers:
+  - url: 'https'
+paths:
+  /trades/save:
+    post:
+      summary: Load trades
+      description: Load trades
+      operationId: loadTrades
+      tags:
+        - trades
+      requestBody:
+        description: Transform Json into a file
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Trade'
+
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    Trade:
+      type: object
+      properties:
+        tradeId:
+          type: string
+        tradeName:
+          type: string
+        bookId:
+          type: integer
+        country:
+          type: string
+        counterpartyId:
+          type: integer
+        currency:
+          type: number
+        cobDate:
+          type: string
+        amount:
+          type: integer
+        tradeTax:
+          type: boolean
+        book:
+          $ref: '#/components/schemas/Book'
+        counterparty:
+          $ref: '#/components/schemas/Counterparty'
+    Counterparty:
+      type: object
+      properties:
+        counterpartyId:
+          type: integer
+        counterpartyName:
+          type: string
+        source:
+          type: string
+        entity:
+          type: string
+    Book:
+      type: object
+      properties:
+        bookId:
+          type: integer
+        bookName:
+          type: string
+        bookAddress:
+          type: string
+        entity:
+          type: string

@@ -1,5 +1,6 @@
 package com.db.transform.service;
 
+import com.db.transform.TestUtils;
 import com.db.transform.entity.Book;
 import com.db.transform.entity.Counterparty;
 import com.db.transform.entity.Trade;
@@ -10,96 +11,62 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
+import javax.xml.stream.XMLStreamException;
 import java.io.File;
 import java.io.IOException;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import static com.db.transform.TestUtils.tradeExample;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TransformServiceTest {
 
-    TransformService service;
-    MockWebServer mockWebServer;
+    TransformService service = new TransformService();
+
+    MockWebServer mockWebServer = new MockWebServer();
+    @Mock
     ObjectMapper objectMapper;
     Book book;
-    Trade trade;
+    @Mock
+    TestUtils testUtils;
+
     Counterparty counterparty;
-    List<Trade> trades;
     String path = "src/test/resources/tradeName-cobdate-test.xml";
 
     @AfterEach
     void tearDown() throws IOException {
         mockWebServer.shutdown();
     }
-
-    @BeforeEach
-    void initialize() throws IOException {
-
-        mockWebServer = new MockWebServer();
-
-        objectMapper = new ObjectMapper();
-
-        service = new TransformService(mockWebServer.url("/").url().toString());
-
-        book = new Book();
-        book.setBookId(3);
-        book.setEntity("BookEntity");
-        book.setBookName("BookName");
-        book.setBookAddress("Spain");
-
-        counterparty = new Counterparty();
-        counterparty.setCounterpartyId(2);
-        counterparty.setEntity("CounterpartyEntity");
-        counterparty.setCounterpartyName("Vodafone");
-        counterparty.setSource("Google");
-
-        Trade trade = new Trade();
-        trade.setId(1);
-        trade.setTradeName("TradeName");
-        trade.setBookId(book.getBookId());
-        trade.setCountry("Jspan");
-        trade.setCounterpartyId(counterparty.getCounterpartyId());
-        trade.setCurrency("$");
-        trade.setCobDate(Date.from(Instant.now()));
-        trade.setAmount(1000.0);
-        trade.setTradeTax(true);
-        trade.setBook(book);
-        trade.setCounterparty(counterparty);
-
-        trades = new ArrayList<>();
-        trades.add(trade);
-
-    }
-
+    @Disabled //falta hacer el webClient
     @Test
     void getTradesFromWebService() throws IOException {
         //Given
+        Trade trade = tradeExample();
+
         mockWebServer.enqueue(new MockResponse()
                 .addHeader("Content-Type", "application/json")
-                .setBody(objectMapper.writeValueAsString(trades))
+                .setBody(objectMapper.writeValueAsString(trade))
         );
 
         //When
-        List<Trade> actualTrades = service.receiveJsonAndParseToXML();
-        actualTrades.add(trade);
+       Trade actualTrade = new Trade();
+
+       actualTrade.setId(1);
 
         //Then
-        assertEquals(trades.get(0).toString(),actualTrades.get(0).toString());
+        assertEquals(trade.toString(),actualTrade.getId().toString());
     }
 
     @Test
-    void fileIsCreated() throws IOException {
+    void fileIsCreated() throws IOException, XMLStreamException {
 
         //Given
-        List<Trade> trades = new ArrayList<>();
+        Trade trade = tradeExample();
         File file = new File(path);
         //When
-        service.createXMLFile(trades, path);
+        service.createXMLFile(trade, path);
         //Then
         assertTrue(file.exists());
     }

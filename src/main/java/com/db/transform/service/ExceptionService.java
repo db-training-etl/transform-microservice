@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 @Service
 public class ExceptionService {
-
+/*
     WebClient webClient; //Refractorizar en una interficie más adelante
     String baseUrl;
 
@@ -47,4 +47,6 @@ public class ExceptionService {
                 .block();
 
     }
+
+ */
 }

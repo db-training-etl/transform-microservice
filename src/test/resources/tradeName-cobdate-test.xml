@@ -422,3 +422,467 @@
     </counterparty>
   </body>
 </message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666868014440</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666868017313</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666880785040</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666880785775</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666880868148</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>tradeName</tradeName>
+  </header>
+  <body>
+    <bookId/>
+    <country/>
+    <counterpartyId/>
+    <currency/>
+    <cobDate/>
+    <amount/>
+    <tradeTax/>
+    <book/>
+    <counterparty/>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>tradeName</tradeName>
+  </header>
+  <body>
+    <bookId/>
+    <country/>
+    <counterpartyId/>
+    <currency/>
+    <cobDate/>
+    <amount/>
+    <tradeTax/>
+    <book/>
+    <counterparty/>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666881452092</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666881457496</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666881578777</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666881622681</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666881881607</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>tradeName</tradeName>
+  </header>
+  <body>
+    <bookId/>
+    <country/>
+    <counterpartyId/>
+    <currency/>
+    <cobDate/>
+    <amount/>
+    <tradeTax/>
+    <book/>
+    <counterparty/>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666881893882</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>tradeName</tradeName>
+  </header>
+  <body>
+    <bookId/>
+    <country/>
+    <counterpartyId/>
+    <currency/>
+    <cobDate/>
+    <amount/>
+    <tradeTax/>
+    <book/>
+    <counterparty/>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666882541585</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666882549256</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>1</id>
+    <tradeName>TradeName</tradeName>
+  </header>
+  <body>
+    <bookId>3</bookId>
+    <country>Jspan</country>
+    <counterpartyId>2</counterpartyId>
+    <currency>$</currency>
+    <cobDate>1666885006489</cobDate>
+    <amount>1000.0</amount>
+    <tradeTax>true</tradeTax>
+    <book>
+      <bookId>3</bookId>
+      <bookName>BookName</bookName>
+      <bookAddress>Spain</bookAddress>
+      <entity>BookEntity</entity>
+    </book>
+    <counterparty>
+      <counterpartyId>2</counterpartyId>
+      <counterpartyName>Vodafone</counterpartyName>
+      <source>Google</source>
+      <entity>CounterpartyEntity</entity>
+    </counterparty>
+  </body>
+</message>

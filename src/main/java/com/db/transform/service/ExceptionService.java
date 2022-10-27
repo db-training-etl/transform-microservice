@@ -1,5 +1,6 @@
 package com.db.transform.service;
 
+import com.db.transform.entity.Exception;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -10,12 +11,12 @@ import java.util.HashMap;
 
 @Service
 public class ExceptionService {
-/*
-    WebClient webClient; //Refractorizar en una interficie más adelante
+
+    WebClient webClient;
     String baseUrl;
 
     public ExceptionService() {
-        this.baseUrl = "jsonplaceholder.typicode.com/"; //Cambiarlo cuando esté montado
+        this.baseUrl = "http://localhost:8090/";
         webClient = WebClient
                 .builder()
                 .baseUrl(baseUrl)
@@ -40,7 +41,7 @@ public class ExceptionService {
         requestBody.put("cobDate", cobDate);
 
         return webClient.post()
-                .uri("users")//Hay que cambiarlo cuando esté montado
+                .uri("exceptions")
                 .body(BodyInserters.fromValue(requestBody))
                 .retrieve()
                 .toEntity(Exception.class)
@@ -48,5 +49,5 @@ public class ExceptionService {
 
     }
 
- */
+
 }

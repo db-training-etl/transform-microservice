@@ -45,6 +45,7 @@ public class TransformControllerIT {
         Trade trade = new Trade();
 
         trade.setId(1);
+        trade.setTradeName("tradeName");
 
         String content = objectMapper.writeValueAsString(trade);
 
@@ -61,7 +62,8 @@ public class TransformControllerIT {
         response
                 .andExpect(status().isOk())
                 .andDo(print())
-                .andExpect(jsonPath("$.id", is(1)));
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.tradeName",is("tradeName")));
     }
 
 

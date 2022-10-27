@@ -12,17 +12,17 @@ import static org.springframework.test.web.reactive.server.WebTestClient.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient
-public class TransformServiceIT {
+public class ExceptionServiceIT {
 
     @Autowired
     WebTestClient webTestClient;
-    @Disabled //Falta por hacer la parte de WebClient
+    @Disabled
     @Test
     public void ReceiveJsonWithExpectedBodyAndHeaders(){
 
         //When
-        ResponseSpec response = webTestClient.get()
-                .uri("/trades/saveXML")
+        ResponseSpec response = webTestClient.post()
+                .uri("/exceptions")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange();
 

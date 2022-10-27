@@ -8,53 +8,69 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.LifecycleState;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.Instant;
+import java.util.Date;
 
 @Service
 @NoArgsConstructor
 public class TransformService {
-    public void createXMLFile(Trade request, String path) throws IOException, XMLStreamException {
+    ExceptionService exceptionService = new ExceptionService();
 
-        Header header = getHeader(request);
+    public void enrichXML(Trade request, String path) throws IOException, XMLStreamException {
 
-        Body body = getBody(request);
+            Header header = getHeader(request);
 
-        TradeWrapper wrapper = new TradeWrapper(header,body);
+            Body body = getBody(request);
 
-        XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newFactory();
-        XMLStreamWriter sw = xmlOutputFactory.createXMLStreamWriter(new FileOutputStream(path,true));
+            TradeWrapper wrapper = new TradeWrapper(header, body);
 
-        XmlMapper mapper = new XmlMapper();
-        mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        mapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true );
-
-        mapper.writeValue(sw,wrapper);
-
-        sw.flush();
-        sw.close();
-
+            formatXML(path, wrapper);
 
 
     }
 
-    private static Body getBody(Trade request) {
+    public void formatXML(String path, TradeWrapper wrapper) throws XMLStreamException, IOException {
+        XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newFactory();
+        XMLStreamWriter sw = xmlOutputFactory.createXMLStreamWriter(new FileOutputStream(path, true));
+
+        XmlMapper mapper = new XmlMapper();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        mapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+
+        mapper.writeValue(sw, wrapper);
+
+        sw.flush();
+        sw.close();
+    }
+
+    public Body getBody(Trade request) {
         return new Body(request.getBookId(), request.getCountry(), request.getCounterpartyId(), request.getCurrency(),
                 request.getCobDate(), request.getAmount(), request.getTradeTax(), request.getBook(), request.getCounterparty());
 
 
     }
 
-    private Header getHeader(Trade request){
-        return new Header(request.getId(), request.getTradeName());
+    public Header getHeader(Trade request){
+        try {
+            return new Header(request.getId(), request.getTradeName());
+        }catch (NullPointerException e){
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            sendException("NullPointerException","NullPointerException",e.getMessage(), sw.toString(),Date.from(Instant.now()));
+            throw new NullPointerException(e.getMessage());
+        }
+    }
+
+        public void sendException(String name,String type, String message,String trace, Date cobDate){
+            exceptionService.sendException(name,type,message,trace,cobDate);
     }
 
 }

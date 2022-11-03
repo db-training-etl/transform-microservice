@@ -1,1 +1,5 @@
-
+url:
+  exception: http://localhost:8089/
+path:
+  filepath: "src/main/resources/tradeName-cobdate.xml"
+  testfilepath: "src/test/resources/tradeName-cobdate.xml"

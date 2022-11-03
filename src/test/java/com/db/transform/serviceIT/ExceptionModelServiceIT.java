@@ -1,4 +1,4 @@
-package com.db.transform.service;
+package com.db.transform.serviceIT;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ import static org.springframework.test.web.reactive.server.WebTestClient.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient
-public class ExceptionServiceIT {
+public class ExceptionModelServiceIT {
 
     @Autowired
     WebTestClient webTestClient;

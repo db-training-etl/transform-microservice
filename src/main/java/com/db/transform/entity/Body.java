@@ -3,8 +3,6 @@ package com.db.transform.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 @AllArgsConstructor
 public class Body {
@@ -13,7 +11,7 @@ public class Body {
     String country;
     Integer counterpartyId;
     String currency;
-    Date cobDate;
+    String cobDate;
     Double amount;
     Boolean tradeTax;
     Book book;

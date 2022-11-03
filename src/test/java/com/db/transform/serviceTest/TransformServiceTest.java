@@ -1,29 +1,36 @@
-package com.db.transform.service;
+package com.db.transform.serviceTest;
 
 import com.db.transform.entity.Trade;
+import com.db.transform.service.ExceptionService;
+import com.db.transform.service.TransformService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.File;
 import java.io.IOException;
-import java.time.Instant;
-import java.util.Date;
 
 import static com.db.transform.TestUtils.tradeExample;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-
+import static org.mockito.Mockito.*;
+@ExtendWith(MockitoExtension.class)
 public class TransformServiceTest {
 
-    ExceptionService exceptionService = new ExceptionService();
-    TransformService service = new TransformService();
+    TransformService service;
+
+    @Mock
+    ExceptionService exceptionService;
     String path = "src/test/resources/tradeName-cobdate-test.xml";
 
+
+    @BeforeEach
+    public void setup(){
+        service = new TransformService();
+    }
     @Test
     void fileIsCreated() throws IOException, XMLStreamException {
 
@@ -31,15 +38,14 @@ public class TransformServiceTest {
         Trade trade = tradeExample();
         File file = new File(path);
         //When
-        service.enrichXML(trade, path);
+
         //Then
         assertTrue(file.exists());
     }
     @Test
-    void whenPopulatingHeaderIdOrTradeNameOrBothAreNull(){
+    void whenPopulatingHeaderIdOrTradeNameOrBothAreNullThrowException(){
+
         Trade trade1 = new Trade();
-        trade1.setId(1);
-        trade1.setTradeName("1");
 
         Trade trade2 = new Trade();
         trade2.setId(1);
@@ -47,12 +53,15 @@ public class TransformServiceTest {
         Trade trade3 = new Trade();
         trade3.setTradeName("1");
 
-        service.getHeader(trade1);
-        service.getHeader(trade2);
-        service.getHeader(trade3);
 
 
-       verify(service, times(1)).sendException("","","","",null);
+
+
+    }
+
+    @Test
+    void sendExceptionMethodIsCalled(){
+
 
     }
 

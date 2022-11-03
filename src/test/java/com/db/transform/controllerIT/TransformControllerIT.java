@@ -1,4 +1,4 @@
-package com.db.transform.controller;
+package com.db.transform.controllerIT;
 
 import com.db.transform.entity.Trade;
 import com.db.transform.service.TransformService;

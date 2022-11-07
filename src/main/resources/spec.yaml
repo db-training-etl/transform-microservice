@@ -18,7 +18,8 @@ paths:
         content:
           application/json:
             schema:
-                $ref: '#/components/schemas/Trade'
+              $ref: '#/components/schemas/Trade'
+
         required: true
       responses:
         '200':

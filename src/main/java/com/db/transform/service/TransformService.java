@@ -1,66 +1,60 @@
 package com.db.transform.service;
 
+import com.db.transform.entity.Body;
+import com.db.transform.entity.Header;
 import com.db.transform.entity.Trade;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.db.transform.entity.TradeWrapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.MediaType;
+import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import lombok.NoArgsConstructor;
+import org.apache.catalina.LifecycleState;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
-import java.io.File;
-import java.io.IOException;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@NoArgsConstructor
 public class TransformService {
+    public void createXMLFile(Trade request, String path) throws IOException, XMLStreamException {
 
-    WebClient webClient; //Refractorizar en una interficie más adelante
-    ObjectMapper objectMapper;
-    String baseUrl;
+        Header header = getHeader(request);
 
-    public TransformService(){
-        this.baseUrl = "jsonplaceholder.typicode.com/"; //Cambiarlo cuando esté montado
-        webClient = WebClient
-                .builder()
-                        .baseUrl(baseUrl)
-                                .build();
+        Body body = getBody(request);
+
+        TradeWrapper wrapper = new TradeWrapper(header,body);
+
+        XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newFactory();
+        XMLStreamWriter sw = xmlOutputFactory.createXMLStreamWriter(new FileOutputStream(path,true));
+
+        XmlMapper mapper = new XmlMapper();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        mapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true );
+
+        mapper.writeValue(sw,wrapper);
+
+        sw.flush();
+        sw.close();
+
+
+
     }
 
-    public TransformService(String baseUrl){
-        this.baseUrl = baseUrl;
-        webClient = WebClient
-                .builder()
-                .baseUrl(baseUrl)
-                .build();
+    private static Body getBody(Trade request) {
+        return new Body(request.getBookId(), request.getCountry(), request.getCounterpartyId(), request.getCurrency(),
+                request.getCobDate(), request.getAmount(), request.getTradeTax(), request.getBook(), request.getCounterparty());
+
+
     }
 
-    public List<Trade> receiveJsonAndParseToXML() throws IOException {
-
-        String path = "src/main/resources/tradeName-cobdate.xml";
-
-        List<Trade> trades = webClient.get()
-               .uri("users")//Hay que cambiarlo cuando esté montado
-               .accept(MediaType.APPLICATION_XML)
-               .retrieve()
-               .bodyToMono(new ParameterizedTypeReference<List<Trade>>() {})
-               .block();
-
-        createXMLFile(trades, path);
-
-        return trades;
+    private Header getHeader(Trade request){
+        return new Header(request.getId(), request.getTradeName());
     }
-
-    public File createXMLFile(List<Trade> requests, String path) throws IOException {
-
-
-        XmlMapper xmlMapper = new XmlMapper();
-        xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        xmlMapper.writeValue(new File(path), requests);
-
-        return new File(path);
-    }
-
 
 }

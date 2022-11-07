@@ -31,6 +31,7 @@ dependencies {
     testImplementation 'com.squareup.okhttp3:mockwebserver:4.10.0'
 
     implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.5'
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.0-rc2'
 }
 

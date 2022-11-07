@@ -13,14 +13,18 @@ import java.io.IOException;
 @AllArgsConstructor
 public class WriteFileRepository {
 
-    public void formatXML(String path, TradeWrapper wrapper) throws IOException {
+    public void formatXML(String path, TradeWrapper wrapper) {
 
-        FileWriter fw = new FileWriter(path,true);
+        try {
+            FileWriter fw = new FileWriter(path, true);
 
-        XmlMapper mapper = new XmlMapper();
-        mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        mapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+            XmlMapper mapper = new XmlMapper();
+            mapper.enable(SerializationFeature.INDENT_OUTPUT);
+            mapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
 
-        mapper.writeValue(fw, wrapper);
+            mapper.writeValue(fw, wrapper);
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

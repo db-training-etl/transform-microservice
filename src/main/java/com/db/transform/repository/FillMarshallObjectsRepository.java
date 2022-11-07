@@ -20,13 +20,23 @@ public class FillMarshallObjectsRepository {
     ExceptionService exceptionService;
 
     public Body getBody(Trade request) {
-        return new Body(request.getBookId(), request.getCountry(), request.getCounterpartyId(), request.getCurrency(),
-                changeDateFormat(request), request.getAmount(), request.getTradeTax(), request.getBook(), request.getCounterparty());
 
+        return Body.builder()
 
+                .bookId(request.getBookId())
+                .country(request.getCountry())
+                .counterpartyId(request.getCounterpartyId())
+                .currency(request.getCurrency())
+                .cobDate(changeDateFormat(request))
+                .amount(request.getAmount())
+                .tradeTax(request.getTradeTax())
+                .book(request.getBook())
+                .counterparty(request.getCounterparty())
+
+                .build();
     }
 
-    private String changeDateFormat(Trade request) {
+    public String changeDateFormat(Trade request) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         return dateFormat.format(request.getCobDate());
@@ -35,14 +45,10 @@ public class FillMarshallObjectsRepository {
     public Header getHeader(Trade request){
 
         Header header = new Header();
-        try {
+
             header.setId(request.getId());
             header.setTradeName(request.getTradeName());
             return header;
-        }catch (NullPointerException e){
-            ExceptionModel exceptionModel = new ExceptionModel("NullPointerException","NullPointerException",e.getMessage(), ExceptionUtils.getStackTrace(e), Date.from(Instant.now()));
-            exceptionService.sendException(exceptionModel);
-            throw new NullPointerException(e.getMessage());
-        }
+      
     }
 }

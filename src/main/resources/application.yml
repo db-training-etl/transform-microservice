@@ -1,5 +1,4 @@
 url:
-  exception: http://localhost:8089/
+  exception: https://etl-exception-management.herokuapp.com/
 path:
   filepath: "src/main/resources/tradeName-cobdate.xml"
-  testfilepath: "src/test/resources/tradeName-cobdate.xml"

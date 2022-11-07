@@ -4,6 +4,7 @@ import com.db.transform.entity.Body;
 import com.db.transform.entity.Header;
 import com.db.transform.entity.Trade;
 import com.db.transform.entity.TradeWrapper;
+import com.db.transform.repository.ExceptionRequest;
 import com.db.transform.repository.FillMarshallObjectsRepository;
 import com.db.transform.repository.WriteFileRepository;
 import lombok.AllArgsConstructor;
@@ -11,19 +12,19 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
 public class TransformService {
-    ExceptionService exceptionService = new ExceptionService();
+
+    ExceptionRequest exceptionRequest;
+    ExceptionService exceptionService = new ExceptionService(exceptionRequest);
     WriteFileRepository writeFileRepository = new WriteFileRepository();
     FillMarshallObjectsRepository fillMarshallObjectsRepository = new FillMarshallObjectsRepository(exceptionService);
-    @Value("${path.filepath}")
+    @Value("${path.testfilepath}")
     String path;
 
-    public void enrichXML(Trade request) throws IOException {
+    public void enrichXML(Trade request) {
 
             Header header = fillMarshallObjectsRepository.getHeader(request);
 

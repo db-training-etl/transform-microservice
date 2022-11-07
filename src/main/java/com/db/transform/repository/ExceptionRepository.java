@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
+
 @Repository
 public class ExceptionRepository implements ExceptionRequest{
 
@@ -31,7 +33,7 @@ public class ExceptionRepository implements ExceptionRequest{
     public ResponseEntity<ExceptionModel> postException(ExceptionModel exception) {
         return webClient.post()
                 .uri("exceptions")
-                .body(BodyInserters.fromValue(exception))
+                .bodyValue(exception)
                 .retrieve()
                 .toEntity(ExceptionModel.class)
                 .block();

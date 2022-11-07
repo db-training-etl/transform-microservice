@@ -13,8 +13,6 @@ import static org.mockito.Mockito.mock;
 
 public class TestUtils {
 
-    TransformService service;
-    TransformController controller;
     static Book book;
     Trade trade;
     static Counterparty counterparty;

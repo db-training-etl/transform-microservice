@@ -1,25 +1,21 @@
-package com.db.transform.controllerIT;
+package com.db.transform.IT;
 
 import com.db.transform.entity.Trade;
-import com.db.transform.service.TransformService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.server.reactive.HttpHandler;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.ResultMatcher;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.Instant;
+import java.util.Date;
 
-import static org.mockito.BDDMockito.given;
+import static com.db.transform.TestUtils.tradeExample;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -42,11 +38,7 @@ public class TransformControllerIT {
         String url = "/trades/save";
 
 
-        Trade trade = new Trade();
-
-        trade.setId(1);
-        trade.setTradeName("tradeName");
-
+        Trade trade = tradeExample();
         String content = objectMapper.writeValueAsString(trade);
 
 
@@ -55,15 +47,10 @@ public class TransformControllerIT {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(content));
 
-
-
         //Then
 
         response
-                .andExpect(status().isOk())
-                .andDo(print())
-                .andExpect(jsonPath("$.id", is(1)))
-                .andExpect(jsonPath("$.tradeName",is("tradeName")));
+                .andExpect(status().isOk());
     }
 
 

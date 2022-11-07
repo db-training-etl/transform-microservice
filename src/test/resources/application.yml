@@ -1,0 +1,5 @@
+path:
+  testfilepath: "src/test/resources/tradeName-cobdate-test.xml"
+  filepath: "src/main/resources/tradeName-cobdate.xml"
+url:
+  exception: https://etl-exception-management.herokuapp.com/

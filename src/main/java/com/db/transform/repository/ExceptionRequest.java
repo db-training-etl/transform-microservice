@@ -1,9 +1,9 @@
 package com.db.transform.repository;
 
 import com.db.transform.entity.ExceptionModel;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-
-import java.util.Date;
+import org.springframework.stereotype.Repository;
 
 public interface ExceptionRequest {
 

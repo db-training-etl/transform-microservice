@@ -1,19 +1,16 @@
-package com.db.transform.serviceTest;
+package com.db.transform.service;
 
 import com.db.transform.entity.ExceptionModel;
 import com.db.transform.repository.ExceptionRepository;
-import com.db.transform.service.ExceptionService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 
-import java.io.IOException;
 import java.time.Instant;
 import java.util.Date;
 
@@ -51,7 +48,13 @@ public class ExceptionServiceTest {
                 .setBody(objectMapper.writeValueAsString(expectedResponse))
         );
 
-        ExceptionModel exception = new ExceptionModel("name","type","message","trace", Date.from(Instant.now()));
+        ExceptionModel exception = ExceptionModel.builder()
+                .name("name")
+                .type("name")
+                .message("message")
+                .trace("trace")
+                .cobDate(Date.from(Instant.now()))
+                .build();
 
         //WHEN
         ResponseEntity<ExceptionModel> actual = exceptionService.sendException(exception);

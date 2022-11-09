@@ -1,6 +1,5 @@
 package com.db.transform.repository;
 
-import com.db.transform.repository.WriteFileRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,8 +18,6 @@ public class WriteFileRepositoryTest {
     public void catchIOExceptionWhenWritingAFile() {
         writeFileRepository.formatXML("",null);
         assertThrows(Exception.class, () -> writeFileRepository.formatXML(null,null));
-
-
 
     }
 

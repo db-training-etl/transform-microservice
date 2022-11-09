@@ -1,20 +1,17 @@
 package com.db.transform.repository;
 
 import com.db.transform.entity.Body;
-import com.db.transform.entity.ExceptionModel;
 import com.db.transform.entity.Header;
 import com.db.transform.entity.Trade;
 import com.db.transform.service.ExceptionService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.stereotype.Repository;
 
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.Date;
 @Repository
 @AllArgsConstructor
+@NoArgsConstructor
 public class FillMarshallObjectsRepository {
 
     ExceptionService exceptionService;

@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Header {
-    private  Integer id;
+    private Integer id;
     private String tradeName;
 }

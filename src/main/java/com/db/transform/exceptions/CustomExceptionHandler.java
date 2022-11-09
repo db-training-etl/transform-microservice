@@ -3,7 +3,6 @@ package com.db.transform.exceptions;
 import com.db.transform.entity.ExceptionModel;
 import com.db.transform.service.ExceptionService;
 import lombok.AllArgsConstructor;
-import lombok.NonNull;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,7 +22,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     ExceptionService exceptionService;
 
     @Override
-    protected @NonNull ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, @NonNull HttpStatus status, @NonNull WebRequest request) {
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
         ExceptionModel exceptionModel = ExceptionModel.builder()
                 .name("MethodArgumentNotValid")

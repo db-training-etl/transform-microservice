@@ -20,8 +20,8 @@ public class ExceptionServiceTest {
 
     ExceptionService exceptionService;
     ExceptionRepository exceptionRepository;
-    ObjectMapper objectMapper = new ObjectMapper();
-    MockWebServer mockBackEnd = new MockWebServer();
+    ObjectMapper objectMapper;
+    MockWebServer mockBackEnd;
     ResponseEntity<ExceptionModel> expectedResponse;
 
     @BeforeEach

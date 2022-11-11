@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<message>
+  <header>
+    <id>2</id>
+    <tradeName>asasa</tradeName>
+  </header>
+  <body>
+    <bookId/>
+    <country/>
+    <counterpartyId/>
+    <currency/>
+    <cobDate>1999-02-12</cobDate>
+    <amount/>
+    <tradeTax/>
+    <book/>
+    <counterparty/>
+  </body>
+</message>

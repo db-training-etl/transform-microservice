@@ -21,4 +21,10 @@ public class TransformController {
        return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PostMapping("/trades/filter/list")
+    public ResponseEntity<ChunckTrade> postFilterList(@RequestBody @Valid ChunckTrade chunk){
+        service.enrichChunk(chunk);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

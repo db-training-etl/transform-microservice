@@ -1,1 +1,5 @@
-
+url:
+  exception: ${env.EXCEPTION_SERVICE_URL:https://etl-exception-management.herokuapp.com/}
+path:
+  filepath: "src/main/resources/tradeName-cobdate.xml"
+  loggerpath: "src/main/resources/log4j.xml"

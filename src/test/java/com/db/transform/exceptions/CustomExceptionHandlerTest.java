@@ -1,6 +1,7 @@
 package com.db.transform.exceptions;
 
 import com.db.transform.controller.TransformController;
+import com.db.transform.entity.ChunkTrade;
 import com.db.transform.entity.Trade;
 import com.db.transform.service.ExceptionService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -21,7 +22,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class CustomExceptionHandlerTest {
 
     CustomExceptionHandler exceptionHandler;
-
     @Mock
     ExceptionService exceptionService;
     @Mock
@@ -29,7 +29,9 @@ public class CustomExceptionHandlerTest {
     Trade trade;
     MockMvc mockMvc;
     String tradeString;
+    String chunkString;
     ObjectMapper mapper;
+    ChunkTrade chunkTrade;
 
     @BeforeEach
     void setup() throws JsonProcessingException {
@@ -38,15 +40,26 @@ public class CustomExceptionHandlerTest {
         trade = new Trade();
         trade.setId(1);
         tradeString = mapper.writeValueAsString(trade);
+        chunkTrade = new ChunkTrade();
+        chunkString = mapper.writeValueAsString(chunkTrade);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).setControllerAdvice(
                 new CustomExceptionHandler(exceptionService)).build();
     }
 
     @Test
-    void failingValidationThrowsBadRequestError() throws Exception {
+    void failingValidationTradeThrowsBadRequestError() throws Exception {
 
         mockMvc.perform(post("/trades/save")
                         .content(tradeString)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().is5xxServerError());
+    }
+
+    @Test
+    void failingValidationChunkThrowsBadRequestError() throws Exception {
+
+        mockMvc.perform(post("/trades/save/chunk")
+                        .content(chunkString)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is5xxServerError());
     }

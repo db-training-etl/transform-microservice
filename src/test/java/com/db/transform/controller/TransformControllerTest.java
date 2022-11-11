@@ -15,9 +15,15 @@ public class TransformControllerTest {
     TransformController controller;
 
     @Test
-    void controllerIsCalled() {
-        controller.mapJsonToXMLAndCreateFile(any());
-        verify(controller,times(1)).mapJsonToXMLAndCreateFile(any());
+    void verifyIfMapTradeToXMLAndCreateFileIsCalled() {
+        controller.mapTradeToXMLAndCreateFile(any());
+        verify(controller,times(1)).mapTradeToXMLAndCreateFile(any());
+    }
+
+    @Test
+    void verifyIfMapChunkOfTradeToXMLAndCreateFileIsCalled() {
+        controller.mapChunkOfTradesToXMLAndCreateFile(any());
+        verify(controller,times(1)).mapChunkOfTradesToXMLAndCreateFile(any());
     }
 
 }

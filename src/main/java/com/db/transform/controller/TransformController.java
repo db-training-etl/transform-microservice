@@ -1,5 +1,6 @@
 package com.db.transform.controller;
 
+import com.db.transform.entity.ChunkTrade;
 import com.db.transform.entity.Trade;
 import com.db.transform.service.TransformService;
 import lombok.AllArgsConstructor;
@@ -16,13 +17,13 @@ import javax.validation.Valid;
 public class TransformController {
     TransformService service;
     @PostMapping(value = "/trades/save")
-    public ResponseEntity<Trade> mapJsonToXMLAndCreateFile(@RequestBody @Valid Trade trade){
+    public ResponseEntity<Trade> mapTradeToXMLAndCreateFile(@RequestBody @Valid Trade trade){
         service.enrichXML(trade);
        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/trades/filter/list")
-    public ResponseEntity<ChunckTrade> postFilterList(@RequestBody @Valid ChunckTrade chunk){
+    @PostMapping("/trades/save/chunk")
+    public ResponseEntity<ChunkTrade> mapChunkOfTradesToXMLAndCreateFile(@RequestBody @Valid ChunkTrade chunk){
         service.enrichChunk(chunk);
         return new ResponseEntity<>(HttpStatus.OK);
     }

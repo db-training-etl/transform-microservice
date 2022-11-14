@@ -23,13 +23,7 @@ public class WriteFileRepository {
 
     @Value("${path.loggerpath}")
     String loggerPath;
-
     Logger logger = LogManager.getLogger(loggerPath);
-
-@Repository
-@AllArgsConstructor
-public class WriteFileRepository {
-
 
     public void formatXML(String path, TradeWrapper wrapper) {
 

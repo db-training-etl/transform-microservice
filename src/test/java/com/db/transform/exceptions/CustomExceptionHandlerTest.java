@@ -22,6 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class CustomExceptionHandlerTest {
 
     CustomExceptionHandler exceptionHandler;
+
     @Mock
     ExceptionService exceptionService;
     @Mock
@@ -29,6 +30,7 @@ public class CustomExceptionHandlerTest {
     Trade trade;
     MockMvc mockMvc;
     String tradeString;
+
     String chunkString;
     ObjectMapper mapper;
     ChunkTrade chunkTrade;
@@ -47,6 +49,7 @@ public class CustomExceptionHandlerTest {
     }
 
     @Test
+
     void failingValidationTradeThrowsBadRequestError() throws Exception {
 
         mockMvc.perform(post("/trades/save")
@@ -54,6 +57,7 @@ public class CustomExceptionHandlerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is5xxServerError());
     }
+
 
     @Test
     void failingValidationChunkThrowsBadRequestError() throws Exception {

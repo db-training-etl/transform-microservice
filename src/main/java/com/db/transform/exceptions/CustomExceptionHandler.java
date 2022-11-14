@@ -34,5 +34,6 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
         exceptionService.sendException(exceptionModel);
         return super.handleMethodArgumentNotValid(ex, headers, HttpStatus.BAD_REQUEST, request);
+
     }
 }

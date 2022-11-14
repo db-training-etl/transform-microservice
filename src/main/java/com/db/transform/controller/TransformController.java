@@ -17,6 +17,7 @@ import javax.validation.Valid;
 public class TransformController {
     TransformService service;
     @PostMapping(value = "/trades/save")
+
     public ResponseEntity<Trade> mapTradeToXMLAndCreateFile(@RequestBody @Valid Trade trade){
         service.enrichXML(trade);
        return new ResponseEntity<>(HttpStatus.OK);

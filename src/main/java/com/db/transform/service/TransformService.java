@@ -1,6 +1,11 @@
 package com.db.transform.service;
 
 import com.db.transform.entity.*;
+
+import com.db.transform.entity.Body;
+import com.db.transform.entity.Header;
+import com.db.transform.entity.Trade;
+import com.db.transform.entity.TradeWrapper;
 import com.db.transform.repository.FillMarshallObjectsRepository;
 import com.db.transform.repository.WriteFileRepository;
 import lombok.AllArgsConstructor;
@@ -12,6 +17,7 @@ import org.springframework.stereotype.Service;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TransformService {
+
 
     WriteFileRepository writeFileRepository = new WriteFileRepository();
     FillMarshallObjectsRepository fillMarshallObjectsRepository = new FillMarshallObjectsRepository();
@@ -30,7 +36,9 @@ public class TransformService {
 
     }
 
+
     public void enrichChunk(ChunkTrade chunk) {
 
     }
+
 }

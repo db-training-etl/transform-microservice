@@ -9,11 +9,11 @@ import java.util.List;
 public class ChunkTrade {
 
     @NotNull
-    private Integer id;
+    private Integer processId;
 
-    private Integer numCHunk;
+    private Integer numChunks;
 
-    private List<Trade> trades;
+    private Integer size;
 
-    private Integer numTrades;
+    private List<Trade> data;
 }

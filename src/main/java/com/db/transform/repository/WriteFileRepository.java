@@ -5,25 +5,15 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import lombok.AllArgsConstructor;
-
-import lombok.NoArgsConstructor;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
 import java.io.FileWriter;
 import java.io.IOException;
-
-
+@Log4j2
 @Repository
 @AllArgsConstructor
-@NoArgsConstructor
 public class WriteFileRepository {
-
-    @Value("${path.loggerpath}")
-    String loggerPath;
-    Logger logger = LogManager.getLogger(loggerPath);
 
     public void formatXML(String path, TradeWrapper wrapper) {
 
@@ -37,9 +27,7 @@ public class WriteFileRepository {
             mapper.writeValue(fw, wrapper);
         }catch (IOException e){
 
-            logger.debug(e.getMessage());
-            logger.info("Error at writing into the document");
-
+            log.info("Error");
             System.out.println(e.getMessage());
 
         }

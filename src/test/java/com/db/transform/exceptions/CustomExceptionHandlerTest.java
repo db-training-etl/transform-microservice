@@ -55,7 +55,7 @@ public class CustomExceptionHandlerTest {
         mockMvc.perform(post("/trades/save")
                         .content(tradeString)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().is5xxServerError());
+                .andExpect(status().isBadRequest());
     }
 
 

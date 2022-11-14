@@ -25,7 +25,6 @@ public class TransformController {
 
     @PostMapping("/trades/save/chunk")
     public ResponseEntity<ChunkTrade> mapChunkOfTradesToXMLAndCreateFile(@RequestBody @Valid ChunkTrade chunk){
-        service.enrichChunk(chunk);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

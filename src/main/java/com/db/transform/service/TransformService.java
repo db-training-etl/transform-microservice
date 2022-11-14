@@ -35,9 +35,4 @@ public class TransformService {
 
     }
 
-
-    public void enrichChunk(ChunkTrade chunk) {
-
-    }
-
 }

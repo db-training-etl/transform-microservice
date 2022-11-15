@@ -1,5 +1,6 @@
 package com.db.transform.IT;
 
+import com.db.transform.entity.ChunkTrade;
 import com.db.transform.entity.Trade;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,7 @@ public class TransformControllerIT {
     ObjectMapper objectMapper;
 
     @Test
-    public void whenJsonConverterIsFoundThenReturnResponse() throws Exception {
+    public void whenTradeIsReceivedThenReturnResponse() throws Exception {
 
         //Given
 
@@ -32,6 +33,32 @@ public class TransformControllerIT {
 
         Trade trade = tradeExample();
         String content = objectMapper.writeValueAsString(trade);
+
+
+        //When
+        ResultActions response = mockMvc.perform(post(url)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(content));
+
+        //Then
+
+        response
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void whenChunkIsReceivedThenReturnResponse() throws Exception {
+
+        //Given
+
+        String url = "/trades/save/chunk";
+
+
+        ChunkTrade chunk = new ChunkTrade();
+
+        chunk.setProcessId(1);
+
+        String content = objectMapper.writeValueAsString(chunk);
 
 
         //When
